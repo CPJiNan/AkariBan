@@ -70,7 +70,7 @@ object MainCommand {
                         data["players.ban"] = playerList.toList()
                         data["logs.ban"] = data.getStringList("logs.ban").plus( ( "玩家" + context["player"] + "被" + sender.name + "于系统时间" + LocalDateTime.now().toString() + "从白名单删除" ) )
                         database.saveToFile(database.file)
-                        sender.sendLang("unban-success")
+                        sender.sendLang("unban-success", context["player"])
                     }
                 }
             }
