@@ -17,7 +17,6 @@ object RegisterManager {
     fun registerAll() {
         registerMetrics()
         registerDatabase()
-        registerVerify()
     }
 
     /**
