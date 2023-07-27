@@ -8,6 +8,8 @@ import taboolib.common.platform.function.info
 import taboolib.expansion.setupPlayerDatabase
 import taboolib.module.metrics.Metrics
 import taboolib.platform.BukkitPlugin
+import java.net.HttpURLConnection
+import java.net.URL
 
 object RegisterManager {
 
@@ -17,6 +19,7 @@ object RegisterManager {
     fun registerAll() {
         registerMetrics()
         registerDatabase()
+        if (ConfigManager.options.getBoolean("update")) registerUrl()
     }
 
     /**
@@ -43,6 +46,19 @@ object RegisterManager {
             BukkitPlugin.getInstance().server.pluginManager.getPlugin("PlayerBanEX")?.let { BukkitPlugin.getInstance().server.pluginManager.disablePlugin(it) }
         }
 
+    }
+
+    /**
+     * 网页读取注册方法
+     */
+    private fun registerUrl() {
+        val urlConnection = URL("http://127.0.0.1/index.html").openConnection() as HttpURLConnection
+        try {
+            info(urlConnection.inputStream.bufferedReader().readText())
+        } catch (_: java.net.ConnectException){
+        } finally {
+            urlConnection.disconnect()
+        }
     }
 
 }
