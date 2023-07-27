@@ -25,11 +25,4 @@ object DebugManager {
         info("                   |___/                                                  ")
     }
 
-    /**
-     * 输出插件更新提示方法
-     */
-    fun updatePrint() {
-        if(ConfigManager.options.getBoolean("update")) info("请加QQ群704109949以获取PlayerBanEX插件最新版本...")
-    }
-
 }

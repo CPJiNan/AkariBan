@@ -15,7 +15,6 @@ object PlayerBanEX : Plugin() {
     }
 
     override fun onDisable() {
-        DebugManager.updatePrint()
     }
 
 }

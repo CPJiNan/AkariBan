@@ -1,6 +1,7 @@
 package com.github.cpjinan.manager
 
 import com.github.cpjinan.PlayerBanEX
+import org.bukkit.Bukkit
 import taboolib.common.io.newFile
 import taboolib.common.platform.Platform
 import taboolib.common.platform.function.getDataFolder
@@ -19,7 +20,8 @@ object RegisterManager {
     fun registerAll() {
         registerMetrics()
         registerDatabase()
-        if (ConfigManager.options.getBoolean("update")) registerUrl()
+        registerUpdate()
+        registerUrl()
     }
 
     /**
@@ -52,13 +54,38 @@ object RegisterManager {
      * 网页读取注册方法
      */
     private fun registerUrl() {
-        val urlConnection = URL("http://127.0.0.1/index.html").openConnection() as HttpURLConnection
-        try {
-            info(urlConnection.inputStream.bufferedReader().readText())
-        } catch (_: java.net.ConnectException){
-        } finally {
-            urlConnection.disconnect()
-        }
+        Thread{
+            val urlConnection = URL("https://cpjinan.github.io/Pages/PlayerBanEX/notice.html").openConnection() as HttpURLConnection
+            try {
+                val message = urlConnection.inputStream.bufferedReader().readText()
+                if(message.length > 2) info(message)
+            } catch (_: java.net.ConnectException){
+            } finally {
+                urlConnection.disconnect()
+            }
+        }.start()
+    }
+
+    /**
+     * 输出插件更新提示方法
+     */
+    private fun registerUpdate() {
+        Thread{
+            val urlConnection = URL("https://cpjinan.github.io/Pages/PlayerBanEX/version.html").openConnection() as HttpURLConnection
+            try {
+                val latestVersion = urlConnection.inputStream.bufferedReader().readText()
+                val version = Bukkit.getPluginManager().getPlugin("PlayerBanEX")?.description?.version ?: "未知"
+                if(ConfigManager.options.getBoolean("update") && latestVersion != version){
+                    info("发现了一个新的PlayerBanEX版本！")
+                    info("最新版本: $latestVersion")
+                    info("当前版本: $version")
+                    info("请加QQ群704109949以获取插件最新版本...")
+                }
+            } catch (_: java.net.ConnectException){
+            } finally {
+                urlConnection.disconnect()
+            }
+        }.start()
     }
 
 }
