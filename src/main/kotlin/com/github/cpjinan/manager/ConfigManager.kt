@@ -7,7 +7,7 @@ import taboolib.module.configuration.Configuration
 
 object ConfigManager {
     private const val configFile = "config.yml"
-    private const val databaseFile = "database/database.yml"
+    private const val databaseFile = "database.yml"
 
     @Config(configFile, autoReload = true)
     lateinit var config : Configuration

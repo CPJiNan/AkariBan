@@ -6,7 +6,6 @@ import org.bukkit.Bukkit
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.*
 import taboolib.expansion.createHelper
-import taboolib.module.chat.colored
 import taboolib.module.lang.sendLang
 import java.time.LocalDateTime
 

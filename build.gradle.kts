@@ -12,10 +12,8 @@ taboolib {
     install("module-chat")
     install("module-metrics")
     install("module-configuration")
-    install("module-database")
     install("platform-bukkit")
     install("expansion-command-helper")
-    install("expansion-player-database")
     classifier = null
     version = "6.0.11-27"
 }
