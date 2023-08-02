@@ -14,6 +14,9 @@ import java.time.LocalDateTime
 @CommandHeader(
     name = "PlayerBanEX",
     aliases = ["playerban"],
+    permission = "playerbanex.admin",
+    permissionDefault = PermissionDefault.OP
+
 )
 object MainCommand {
 
@@ -89,7 +92,7 @@ object MainCommand {
                     }
                 }
                 //删除白名单
-                literal("add") {
+                literal("remove") {
                     dynamic("player") {
                         execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
                             val playerList = ConfigManager.data.getStringList("players.whitelist").toMutableList()

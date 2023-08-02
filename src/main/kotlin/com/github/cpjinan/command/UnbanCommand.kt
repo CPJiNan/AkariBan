@@ -10,6 +10,8 @@ import java.time.LocalDateTime
 @CommandHeader(
     name = "unban",
     aliases = ["unbanex"],
+    permission = "playerbanex.admin",
+    permissionDefault = PermissionDefault.OP
 )
 object UnbanCommand {
 

@@ -12,6 +12,8 @@ import java.time.LocalDateTime
 @CommandHeader(
     name = "ban",
     aliases = ["banex"],
+    permission = "playerbanex.admin",
+    permissionDefault = PermissionDefault.OP
 )
 object BanCommand {
 

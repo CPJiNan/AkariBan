@@ -12,6 +12,8 @@ import java.time.LocalDateTime
 @CommandHeader(
     name = "kick",
     aliases = ["kickex"],
+    permission = "playerbanex.admin",
+    permissionDefault = PermissionDefault.OP
 )
 object KickCommand {
 
