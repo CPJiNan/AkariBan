@@ -1,16 +1,7 @@
-# 数据文件
-database:
-  # 玩家列表
-  players:
-    # 封禁
-    ban: []
-    # 白名单
-    whitelist: []
-  # 日志
-  logs:
-    # 请出
-    kick: []
-    # 封禁
-    ban: []
-    # 白名单
-    whitelist: []
+ban-list:
+  test:
+    enable: true
+    reason: '封禁功能测试'
+    time: '2023-11-26 15:00:00'
+    period: '2023-11-28'
+    admin: CPJiNan

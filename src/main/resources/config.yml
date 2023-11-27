@@ -9,66 +9,34 @@
 
 # 全局设置
 options:
-  # 激活许可证
-  license: false
   # 插件更新提醒
   update: true
   # 启用bstats统计
   metrics: true
   # 启用调试模式
-  debug: false
-
-# 模块设置
-module:
-  # 请出模块
-  kick:
-    # 启用该模块
-    enable: true
-    # 消息格式
-    # {0}代表请出原因,{1}代表玩家名称,{2}代表操作时间
-    format:
-      - "&c您已被管理员从服务器请出！\n"
-      - "\n"
-      - "&7请出原因: &f{0}\n"
-      - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
-      - "\n"
-      - "&7玩家名称: &f{1}"
-  # 封禁模块
-  ban:
-    # 启用该模块
-    enable: true
-    # 封禁模式 (disconnect,kick)
-    # disconnect模式下被封禁玩家的服务器连接请求将在登入前被拒绝，但该模式无法显示封禁原因和时间且无法使用数据库
-    # kick模式下被封禁玩家将在进入服务器后被踢出，但第三方插件仍会判定该玩家登入过服务器
-    mode: disconnect
-    # 消息格式
-    # {0}代表请出原因,{1}代表玩家名称,{2}代表操作时间
-    format:
-      - "&c您已被管理员从服务器封禁！\n"
-      - "\n"
-      - "&7封禁原因: &f{0}\n"
-      - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
-      - "\n"
-      - "&7玩家名称: &f{1}"
-    # 占位符
-    # disconnect模式下对应变量显示的内容
-    placeholder:
-      unknown-reason: "未知原因"
-      unknown-time: "未知时间"
-  # 白名单模块
-  whitelist:
-    # 启用该模块
-    enable: false
-    # 白名单模式 (disconnect,kick)
-    # disconnect模式下白名单外玩家的服务器连接请求将在登入前被拒绝，但该模式无法使用数据库
-    # kick模式下白名单外玩家将在进入服务器后被踢出，但第三方插件仍会判定该玩家登入过服务器
-    mode: disconnect
-    # 消息格式
-    # {0}代表玩家名称,{1}代表当前时间
-    format:
-      - "&c您已被管理员从服务器请出！\n"
-      - "\n"
-      - "&7封禁原因: &f您不在该服务器白名单中！\n"
-      - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
-      - "\n"
-      - "&7玩家名称: &f{0}"
+  debug: true
+  # 时间格式
+  time-format: "yyyy-MM-dd HH:mm:ss"
+  # 命令中封禁期限"period"变量的格式
+  period-format: "yyyy-MM-dd"
+  # 请出格式
+  kick-format:
+    - "&c您已被管理员从服务器请出！\n"
+    - "\n"
+    - "&7操作时间: &f{2}\n"
+    - "&7操作管理: &f{3}\n"
+    - "&7请出原因: &f{1}\n"
+    - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
+    - "\n"
+    - "&7玩家名称: &f{0}"
+  # 封禁格式
+  ban-format:
+    - "&c您已被管理员从服务器封禁！\n"
+    - "&7封禁期限: &f{1}\n"
+    - "\n"
+    - "&7操作时间: &f{3}\n"
+    - "&7操作管理: &f{4}\n"
+    - "&7封禁原因: &f{2}\n"
+    - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
+    - "\n"
+    - "&7玩家名称: &f{0}"

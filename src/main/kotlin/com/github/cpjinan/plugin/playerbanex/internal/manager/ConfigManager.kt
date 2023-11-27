@@ -1,4 +1,4 @@
-package com.github.cpjinan.manager
+package com.github.cpjinan.plugin.playerbanex.internal.manager
 
 import taboolib.library.configuration.ConfigurationSection
 import taboolib.module.configuration.Config
@@ -8,6 +8,7 @@ import taboolib.module.configuration.Configuration
 object ConfigManager {
     private const val configFile = "config.yml"
     private const val databaseFile = "database.yml"
+    private const val logFile = "logs.yml"
 
     @Config(configFile, autoReload = true)
     lateinit var config : Configuration
@@ -15,15 +16,12 @@ object ConfigManager {
     lateinit var options: ConfigurationSection
 
     @Config(databaseFile, autoReload = true)
-    lateinit var database : Configuration
-    @ConfigNode("database", databaseFile)
-    lateinit var data: ConfigurationSection
+    lateinit var data : Configuration
+    @ConfigNode("ban-list", databaseFile)
+    lateinit var banlist: ConfigurationSection
 
-    @ConfigNode("module.kick", configFile)
-    lateinit var kick: ConfigurationSection
-    @ConfigNode("module.ban", configFile)
-    lateinit var ban: ConfigurationSection
-    @ConfigNode("module.whitelist", configFile)
-    lateinit var whitelist: ConfigurationSection
+    @Config(logFile, autoReload = true)
+    lateinit var log : Configuration
+
 
 }
