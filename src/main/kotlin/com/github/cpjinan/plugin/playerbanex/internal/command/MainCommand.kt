@@ -27,7 +27,7 @@ object MainCommand {
     val main = mainCommand {
         createHelper()
 
-        // 请出模块
+        // 请出命令
         literal("kick") {
             dynamic("player") {
                 suggestPlayers()
@@ -44,7 +44,7 @@ object MainCommand {
             }
         }
 
-        // 封禁模块
+        // 封禁命令
         literal("ban") {
             dynamic("player") {}.dynamic("period").dynamic("reason") {
                 execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
@@ -67,7 +67,7 @@ object MainCommand {
             }
         }
 
-        // 解封模块
+        // 解封命令
         literal("unban") {
             dynamic("player") {
                 execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
@@ -82,73 +82,6 @@ object MainCommand {
             }
         }
 
-    }
-
-    // 请出命令
-    @CommandBody(
-        aliases = ["kickex","kick-ex"]
-    )
-    val kick = mainCommand {
-        createHelper()
-        dynamic("player") {
-            suggestPlayers()
-        }.dynamic("reason") {
-            execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
-                Bukkit.getPlayerExact(context["player"])?.kickPlayer(
-                    FormatManager.getKickFormat(context["player"], context["reason"], DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now()) , sender.name)
-                )
-                sender.sendLang("kick-success", context["player"])
-                log["kick"] = log.getStringList("kick").plus("玩家" + context["player"] + "被" + sender.name + "于系统时间" + DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now()) + "因" + context["reason"] + "从服务器请出")
-                log.saveToFile(log.file)
-                log.reload()
-            }
-        }
-    }
-
-    // 封禁命令
-    @CommandBody(
-        aliases = ["banex","ban-ex"]
-    )
-    val ban = mainCommand {
-        createHelper()
-        dynamic("player") {}.dynamic("period").dynamic("reason") {
-            execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
-                Bukkit.getPlayerExact(context["player"])?.kickPlayer(
-                    FormatManager.getBanFormat(context["player"], context["period"], context["reason"], DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now()) , sender.name)
-                )
-                banlist["${context["player"]}.enable"] = true
-                banlist["${context["player"]}.time"] =
-                    DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now())
-                banlist["${context["player"]}.period"] = context["period"]
-                banlist["${context["player"]}.reason"] = context["reason"]
-                banlist["${context["player"]}.admin"] = sender.name
-                data.saveToFile(data.file)
-                data.reload()
-                sender.sendLang("ban-success", context["player"])
-                log["ban"] = log.getStringList("ban").plus("玩家" + context["player"] + "被" + sender.name + "于系统时间" + DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now()) + "因" + context["reason"] + "从服务器封禁至" + context["period"])
-                log.saveToFile(log.file)
-                log.reload()
-            }
-        }
-    }
-
-    // 解封命令
-    @CommandBody(
-        aliases = ["unbanex","unban-ex","un-ban","pardon"]
-    )
-    val unban = mainCommand {
-        createHelper()
-        dynamic("player") {
-            execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
-                banlist["${context["player"]}.enable"] = false
-                data.saveToFile(data.file)
-                data.reload()
-                sender.sendLang("unban-success", context["player"])
-                log["unban"] = log.getStringList("unban").plus("玩家" + context["player"] + "被" + sender.name + "于系统时间" + DateTimeFormatter.ofPattern(ConfigManager.options.getString("time-format")).format(LocalDateTime.now()) + "从服务器解封")
-                log.saveToFile(log.file)
-                log.reload()
-            }
-        }
     }
 
 }
