@@ -3,5 +3,5 @@ ban-list:
     enable: true
     reason: '封禁功能测试'
     time: '2023-11-26 15:00:00'
-    period: '2023-11-28'
+    period: '20231128150000'
     admin: CPJiNan

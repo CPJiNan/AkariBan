@@ -15,10 +15,9 @@ import java.time.format.DateTimeFormatter
 
 @CommandHeader(
     name = "PlayerBanEX",
-    aliases = ["playerban"],
+    aliases = ["playerban","playerban-ex"],
     permission = "playerbanex.admin",
     permissionDefault = PermissionDefault.OP
-
 )
 object MainCommand {
 

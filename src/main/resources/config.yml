@@ -18,7 +18,7 @@ options:
   # 时间格式
   time-format: "yyyy-MM-dd HH:mm:ss"
   # 命令中封禁期限"period"变量的格式
-  period-format: "yyyy-MM-dd"
+  period-format: "yyyyMMddHHmmss"
   # 请出格式
   kick-format:
     - "&c您已被管理员从服务器请出！\n"
