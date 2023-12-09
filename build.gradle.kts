@@ -16,6 +16,13 @@ taboolib {
     install("expansion-command-helper")
     classifier = null
     version = "6.0.12-35"
+    description {
+        contributors {
+            name("CPJiNan")
+        }
+        dependencies {
+        }
+    }
 }
 
 repositories {

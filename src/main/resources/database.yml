@@ -1,7 +1,1 @@
-ban-list:
-  test:
-    enable: true
-    reason: '封禁功能测试'
-    time: '2023-11-26 15:00:00'
-    period: '20231128150000'
-    admin: CPJiNan
+ban-list: {}

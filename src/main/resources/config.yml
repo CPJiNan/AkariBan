@@ -16,27 +16,28 @@ options:
   # 启用调试模式
   debug: true
   # 时间格式
-  time-format: "yyyy-MM-dd HH:mm:ss"
+  time-format: "yyyy年MM月dd日HH时mm分ss秒"
   # 命令中封禁期限"period"变量的格式
-  period-format: "yyyyMMddHHmmss"
+  period-format: "yyyy年MM月dd日HH时mm分ss秒"
   # 请出格式
   kick-format:
     - "&c您已被管理员从服务器请出！\n"
     - "\n"
-    - "&7操作时间: &f{2}\n"
-    - "&7操作管理: &f{3}\n"
+    - "&7玩家名称: &f{0}\n"
     - "&7请出原因: &f{1}\n"
+    - "\n"
+    - "&7操作管理: &f{3}\n"
+    - "&7操作时间: &f{2}\n"
     - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
     - "\n"
-    - "&7玩家名称: &f{0}"
   # 封禁格式
   ban-format:
-    - "&c您已被管理员从服务器封禁！\n"
-    - "&7封禁期限: &f{1}\n"
+    - "&c您已被管理员从服务器封禁至{1}！\n"
     - "\n"
-    - "&7操作时间: &f{3}\n"
-    - "&7操作管理: &f{4}\n"
+    - "&7玩家名称: &f{0}\n"
     - "&7封禁原因: &f{2}\n"
+    - "\n"
+    - "&7操作管理: &f{4}\n"
+    - "&7操作时间: &f{3}\n"
     - "&7查看详情: &b&nhttps://www.mcbbs.net/\n"
     - "\n"
-    - "&7玩家名称: &f{0}"
