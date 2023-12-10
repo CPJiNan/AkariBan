@@ -13,7 +13,6 @@ taboolib {
     install("module-metrics")
     install("module-configuration")
     install("platform-bukkit")
-    install("platform-bungee")
     install("expansion-command-helper")
     classifier = null
     version = "6.0.12-35"
