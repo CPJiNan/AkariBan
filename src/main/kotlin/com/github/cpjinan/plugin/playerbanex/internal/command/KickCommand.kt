@@ -1,8 +1,6 @@
 package com.github.cpjinan.plugin.playerbanex.internal.command
 
 import com.github.cpjinan.plugin.playerbanex.internal.manager.ConfigManager
-import com.github.cpjinan.plugin.playerbanex.internal.manager.ConfigManager.banlist
-import com.github.cpjinan.plugin.playerbanex.internal.manager.ConfigManager.data
 import com.github.cpjinan.plugin.playerbanex.internal.manager.ConfigManager.log
 import com.github.cpjinan.plugin.playerbanex.internal.manager.FormatManager
 import org.bukkit.Bukkit
