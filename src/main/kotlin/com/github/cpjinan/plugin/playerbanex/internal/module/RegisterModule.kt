@@ -1,5 +1,6 @@
-package com.github.cpjinan.plugin.playerbanex.internal.manager
+package com.github.cpjinan.plugin.playerbanex.internal.module
 
+import com.github.cpjinan.plugin.playerbanex.internal.manager.ConfigManager
 import taboolib.common.platform.Platform
 import taboolib.common.platform.function.info
 import taboolib.module.metrics.Metrics
@@ -7,7 +8,7 @@ import taboolib.platform.BukkitPlugin
 import java.net.HttpURLConnection
 import java.net.URL
 
-object RegisterManager {
+object RegisterModule {
 
     /**
      * 快捷注册方法
