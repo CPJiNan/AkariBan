@@ -2,7 +2,9 @@ plugins {
     `java-library`
     `maven-publish`
     id("io.izzel.taboolib") version "1.56"
-    id("org.jetbrains.kotlin.jvm") version "1.5.10"
+    id("org.jetbrains.kotlin.jvm") version "1.9.22"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
+    id("org.jetbrains.dokka") version "1.9.10"
 }
 
 taboolib {
@@ -15,12 +17,14 @@ taboolib {
     install("platform-bukkit")
     install("expansion-command-helper")
     classifier = null
-    version = "6.0.12-56"
+    version = "6.0.12-69"
     description {
         contributors {
             name("CPJiNan")
         }
         dependencies {
+            name("AkariLib")
+            name("PlaceholderAPI").optional(true)
         }
     }
 }
@@ -34,6 +38,8 @@ dependencies {
     compileOnly("ink.ptms.core:v11902:11902-minimize:mapped")
     compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
     compileOnly(kotlin("stdlib"))
+    taboo("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    taboo("org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.6.0")
     compileOnly(fileTree("libs"))
 }
 

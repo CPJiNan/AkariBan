@@ -1,1 +1,1 @@
-rootProject.name="PlayerBanEX"
+rootProject.name="AkariBan"
