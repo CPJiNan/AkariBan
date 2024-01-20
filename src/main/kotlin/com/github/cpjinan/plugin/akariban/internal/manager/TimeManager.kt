@@ -6,7 +6,8 @@ import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.parseTime
 
 object TimeManager {
     fun getUnbanTime(banTime: String, banDuration: String): String {
-        return banTime.formatToLocalDateTime(FormatManager.getTimeFormat())!!
+        return if (banTime.isBlank()) ""
+        else banTime.formatToLocalDateTime(FormatManager.getTimeFormat())!!
             .plusSeconds(
                 banDuration.parseTime(
                     second = ConfigManager.config.getString("options.time-format.duration.second")!!,

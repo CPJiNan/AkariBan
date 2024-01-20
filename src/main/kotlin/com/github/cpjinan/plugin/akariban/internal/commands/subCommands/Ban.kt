@@ -3,6 +3,7 @@ package com.github.cpjinan.plugin.akariban.internal.commands.subCommands
 import com.github.cpjinan.plugin.akariban.internal.api.AkariBanAPI
 import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
+import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.isPlayerOnline
 import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.formatToString
 import org.bukkit.Bukkit
 import taboolib.common.platform.ProxyCommandSender
@@ -17,42 +18,52 @@ object Ban {
         createHelper()
         dynamic("player", optional = false).dynamic("duration", optional = false) {
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
-                if (Bukkit.getOfflinePlayer(context["player"]).isOnline) {
+                val playerName = context["player"]
+                val banReason = ConfigManager.getDefaultBanReason()
+                val banDuration = context["duration"]
+                val banTime = LocalDateTime.now().formatToString(FormatManager.getTimeFormat())
+                val banningAdmin = sender.name
+                if (playerName.isPlayerOnline()) {
                     AkariBanAPI.banOnlinePlayer(
-                        Bukkit.getPlayer(context["player"])!!,
-                        ConfigManager.getDefaultBanReason(),
-                        context["duration"],
-                        LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                        sender.name
+                        Bukkit.getPlayer(playerName)!!,
+                        banReason,
+                        banDuration,
+                        banTime,
+                        banningAdmin
                     )
                 } else {
                     AkariBanAPI.banOfflinePlayer(
-                        context["player"],
-                        ConfigManager.getDefaultBanReason(),
-                        context["duration"],
-                        LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                        sender.name
+                        playerName,
+                        banReason,
+                        banDuration,
+                        banTime,
+                        banningAdmin
                     )
                 }
-                sender.sendLang("ban-success", context["player"])
+                sender.sendLang("ban-success", playerName)
             }
         }.dynamic("reason", optional = true) {
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
-                if (Bukkit.getOfflinePlayer(context["player"]).isOnline) {
+                val playerName = context["player"]
+                val banReason = context["reason"]
+                val banDuration = context["duration"]
+                val banTime = LocalDateTime.now().formatToString(FormatManager.getTimeFormat())
+                val banningAdmin = sender.name
+                if (playerName.isPlayerOnline()) {
                     AkariBanAPI.banOnlinePlayer(
                         Bukkit.getPlayer(context["player"])!!,
-                        context["reason"],
-                        context["duration"],
-                        LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                        sender.name
+                        banReason,
+                        banDuration,
+                        banTime,
+                        banningAdmin
                     )
                 } else {
                     AkariBanAPI.banOfflinePlayer(
-                        context["player"],
-                        context["reason"],
-                        context["duration"],
-                        LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                        sender.name
+                        playerName,
+                        banReason,
+                        banDuration,
+                        banTime,
+                        banningAdmin
                     )
                 }
                 sender.sendLang("ban-success", context["player"])

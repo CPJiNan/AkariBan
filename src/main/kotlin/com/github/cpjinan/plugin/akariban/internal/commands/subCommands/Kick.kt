@@ -19,21 +19,27 @@ object Kick {
         dynamic("player", optional = false) {
             suggestPlayers()
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
+                val kickReason = ConfigManager.getDefaultKickReason()
+                val kickTime = LocalDateTime.now().formatToString(FormatManager.getTimeFormat())
+                val kickingAdmin = sender.name
                 AkariBanAPI.kickPlayer(
                     Bukkit.getPlayer(context["player"])!!,
-                    ConfigManager.getDefaultKickReason(),
-                    LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                    sender.name
+                    kickReason,
+                    kickTime,
+                    kickingAdmin
                 )
                 sender.sendLang("kick-success", context["player"])
             }
         }.dynamic("reason", optional = true) {
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
+                val kickReason = context["reason"]
+                val kickTime = LocalDateTime.now().formatToString(FormatManager.getTimeFormat())
+                val kickingAdmin = sender.name
                 AkariBanAPI.kickPlayer(
                     Bukkit.getPlayer(context["player"])!!,
-                    context["reason"],
-                    LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
-                    sender.name
+                    kickReason,
+                    kickTime,
+                    kickingAdmin
                 )
                 sender.sendLang("kick-success", context["player"])
             }
