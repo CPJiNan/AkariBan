@@ -41,5 +41,7 @@ object PlayerListener {
                 data.banningAdmin
             )
         )
+        // data save
+        DatabaseManager.getDatabase().save()
     }
 }

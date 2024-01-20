@@ -10,6 +10,7 @@ import taboolib.common.platform.command.CommandContext
 import taboolib.common.platform.command.subCommand
 import taboolib.common.platform.command.suggestPlayers
 import taboolib.expansion.createHelper
+import taboolib.module.lang.sendLang
 import java.time.LocalDateTime
 
 object Kick {
@@ -24,6 +25,7 @@ object Kick {
                     LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
                     sender.name
                 )
+                sender.sendLang("kick-success", context["player"])
             }
         }.dynamic("reason", optional = true) {
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
@@ -33,6 +35,7 @@ object Kick {
                     LocalDateTime.now().formatToString(FormatManager.getTimeFormat()),
                     sender.name
                 )
+                sender.sendLang("kick-success", context["player"])
             }
         }
     }

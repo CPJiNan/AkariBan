@@ -9,7 +9,6 @@ import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.getPlayerID
 import com.github.cpjinan.plugin.akariban.internal.manager.TimeManager
 import org.bukkit.Bukkit
-import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 
 object AkariBanAPI {
@@ -75,14 +74,14 @@ object AkariBanAPI {
         banningAdmin: String = ""
     ) {
         // offline player
-        val offlinePlayer: OfflinePlayer = Bukkit.getOfflinePlayer(playerName)
+        val playerID = Bukkit.getOfflinePlayer(playerName).getPlayerID() ?: playerName
         // offline player ban event
         val offlinePlayerBanEvent = OfflinePlayerBanEvent(playerName, banReason, banDuration, banTime, banningAdmin)
         offlinePlayerBanEvent.call()
         if (offlinePlayerBanEvent.isCancelled) return
         // set data
         setPlayerData(
-            playerID = Bukkit.getOfflinePlayer(offlinePlayerBanEvent.playerName).getPlayerID()!!,
+            playerID = playerID,
             isBanned = true,
             banReason = offlinePlayerBanEvent.banReason,
             banningAdmin = offlinePlayerBanEvent.banningAdmin,
@@ -99,7 +98,14 @@ object AkariBanAPI {
         playerUnbanEvent.call()
         if (playerUnbanEvent.isCancelled) return
         // set data
-        setPlayerData(playerID = playerID)
+        setPlayerData(
+            playerID = playerID,
+            isBanned = false,
+            banReason = "",
+            banningAdmin = "",
+            banTime = "",
+            banDuration = ""
+        )
     }
 
     private fun setPlayerData(
@@ -115,11 +121,14 @@ object AkariBanAPI {
         data.playerID = playerID
         data.isBanned = isBanned
         data.banTime = banTime
-        data.unbanTime = TimeManager.getUnbanTime(banTime, banDuration)
+        data.unbanTime = run {
+            if (banTime != "") TimeManager.getUnbanTime(banTime, banDuration) else ""
+        }
         data.banDuration = banDuration
         data.banReason = banReason
         data.banningAdmin = banningAdmin
         db.updatePlayer(playerID, data)
+        DatabaseManager.getDatabase().save()
     }
 
     fun kickPlayer(player: Player, kickReason: String, kickTime: String, kickingAdmin: String) {

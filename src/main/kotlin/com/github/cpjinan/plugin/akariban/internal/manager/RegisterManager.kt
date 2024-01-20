@@ -9,11 +9,20 @@ import java.net.URL
 
 object RegisterManager {
     fun registerAll() {
+        registerLogo()
         registerUrl()
         registerUpdate()
         DatabaseManager.getDatabase().save()
         PluginRegistry.registerPlugin(BukkitPlugin.getInstance())
-        MetricsUtil.registerBukkitMetrics(18992, BukkitPlugin.getInstance())
+        if (ConfigManager.isMetricsEnabled()) MetricsUtil.registerBukkitMetrics(18992, BukkitPlugin.getInstance())
+    }
+
+    private fun registerLogo() {
+        info("      _    _              _ ____                ")
+        info("     / \\  | | ____ _ _ __(_) __ )  __ _ _ __    ")
+        info("    / _ \\ | |/ / _` | '__| |  _ \\ / _` | '_ \\   ")
+        info("   / ___ \\|   < (_| | |  | | |_) | (_| | | | |  ")
+        info("  /_/   \\_\\_|\\_\\__,_|_|  |_|____/ \\__,_|_| |_|  ")
     }
 
     private fun registerUrl() {

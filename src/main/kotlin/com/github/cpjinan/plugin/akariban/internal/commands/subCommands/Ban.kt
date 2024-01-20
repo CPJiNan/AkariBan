@@ -9,6 +9,7 @@ import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.CommandContext
 import taboolib.common.platform.command.subCommand
 import taboolib.expansion.createHelper
+import taboolib.module.lang.sendLang
 import java.time.LocalDateTime
 
 object Ban {
@@ -33,6 +34,7 @@ object Ban {
                         sender.name
                     )
                 }
+                sender.sendLang("ban-success", context["player"])
             }
         }.dynamic("reason", optional = true) {
             execute<ProxyCommandSender> { sender: ProxyCommandSender, context: CommandContext<ProxyCommandSender>, _: String ->
@@ -53,6 +55,7 @@ object Ban {
                         sender.name
                     )
                 }
+                sender.sendLang("ban-success", context["player"])
             }
         }
     }
