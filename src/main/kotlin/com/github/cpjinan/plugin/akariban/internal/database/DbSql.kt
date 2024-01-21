@@ -39,7 +39,7 @@ class DbSql : Database {
 
     override fun getPlayerByName(name: String): Player {
         return table.select(dataSource) {
-            where { "user" eq name }
+            where { "playerID" eq name }
         }.firstOrNull {
             Player(
                 this.getBoolean("isBanned"),
@@ -53,14 +53,28 @@ class DbSql : Database {
     }
 
     override fun updatePlayer(name: String, value: Player) {
+        if (!table.find(dataSource) { where { "playerID" eq name } }) {
+            table.insert(
+                dataSource,
+                "playerID",
+                "isBanned",
+                "banReason",
+                "banDuration",
+                "banTime",
+                "unbanTime",
+                "banningAdmin"
+            ) {
+                value(name, false, "", "", "", "", "")
+            }
+        }
         table.update(dataSource) {
+            where { "playerID" eq name }
             set("isBanned", value.isBanned)
             set("banReason", value.banReason)
             set("banDuration", value.banDuration)
             set("banTime", value.banTime)
             set("unbanTime", value.unbanTime)
             set("banningAdmin", value.banningAdmin)
-            where { "user" eq name }
         }
     }
 
