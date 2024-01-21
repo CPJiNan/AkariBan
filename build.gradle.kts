@@ -10,8 +10,9 @@ plugins {
 taboolib {
     install("common")
     install("common-5")
-    install("module-lang")
+    install("module-ui")
     install("module-chat")
+    install("module-lang")
     install("module-database")
     install("module-configuration")
     install("platform-bukkit")
