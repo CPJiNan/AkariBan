@@ -37,9 +37,16 @@ options:
       year: "y"
   # 数据存储相关
   database:
-    # 存储方式 (JSON, CBOR)
+    # 存储方式 (JSON, CBOR, SQL)
     type: JSON
     uri: database.json
+    # 数据库设置
+    sql:
+      host: localhost
+      port: 3306
+      user: root
+      password: password
+      database: minecraft
   # 消息格式相关
   message-format:
     # 请出消息格式

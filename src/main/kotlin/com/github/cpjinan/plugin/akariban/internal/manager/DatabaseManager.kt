@@ -3,6 +3,7 @@ package com.github.cpjinan.plugin.akariban.internal.manager
 import com.github.cpjinan.plugin.akariban.internal.database.Database
 import com.github.cpjinan.plugin.akariban.internal.database.DbCbor
 import com.github.cpjinan.plugin.akariban.internal.database.DbJson
+import com.github.cpjinan.plugin.akariban.internal.database.DbSql
 
 object DatabaseManager {
     private var database: Database? = null
@@ -17,6 +18,10 @@ object DatabaseManager {
 
             "CBOR" -> {
                 DbCbor(dbUri ?: "database.cbor")
+            }
+
+            "SQL" -> {
+                DbSql()
             }
 
             else -> {
