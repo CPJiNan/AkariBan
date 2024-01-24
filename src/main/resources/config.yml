@@ -18,7 +18,7 @@ options:
   default-value:
     # 请出原因
     kick-reason: "管理员未填写请出原因"
-    # 请出原因
+    # 封禁原因
     ban-reason: "管理员未填写封禁原因"
   # 时间格式
   time-format:
