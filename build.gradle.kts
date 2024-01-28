@@ -1,25 +1,23 @@
+import io.izzel.taboolib.gradle.*
+
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "1.56"
+    id("io.izzel.taboolib") version "2.0.2"
     id("org.jetbrains.kotlin.jvm") version "1.9.22"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
     id("org.jetbrains.dokka") version "1.9.10"
 }
 
 taboolib {
-    install("common")
-    install("common-5")
-    install("module-ui")
-    install("module-chat")
-    install("module-lang")
-    install("module-database")
-    install("module-configuration")
-    install("platform-bukkit")
-    install("platform-bungee")
-    install("expansion-command-helper")
-    classifier = null
-    version = "6.0.12-69"
+    env {
+        install(
+            UNIVERSAL,
+            UI,
+            DATABASE,
+            BUKKIT_ALL
+            )
+    }
     description {
         contributors {
             name("CPJiNan")
@@ -29,6 +27,7 @@ taboolib {
             name("PlaceholderAPI").optional(true)
         }
     }
+    version { taboolib = "6.1.0" }
 }
 
 repositories {
@@ -37,8 +36,8 @@ repositories {
 
 dependencies {
     compileOnly("ink.ptms:nms-all:1.0.0")
-    compileOnly("ink.ptms.core:v11902:11902-minimize:mapped")
-    compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
+    compileOnly("ink.ptms.core:v12004:12004:mapped")
+    compileOnly("ink.ptms.core:v12004:12004:universal")
     compileOnly(kotlin("stdlib"))
     taboo("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     taboo("org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.6.0")
