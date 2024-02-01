@@ -1,6 +1,5 @@
 package com.github.cpjinan.plugin.akariban.utils
 
-import org.bukkit.plugin.Plugin
 import taboolib.module.chat.colored
 import taboolib.platform.BukkitPlugin
 

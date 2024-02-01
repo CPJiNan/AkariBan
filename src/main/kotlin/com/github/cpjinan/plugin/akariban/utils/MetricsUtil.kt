@@ -1,6 +1,5 @@
 package com.github.cpjinan.plugin.akariban.utils
 
-import org.bukkit.plugin.Plugin
 import taboolib.common.platform.Platform
 import taboolib.module.metrics.Metrics
 import taboolib.platform.BukkitPlugin

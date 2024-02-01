@@ -1,1 +1,1 @@
-rootProject.name="AkariBan"
+rootProject.name = "AkariBan"
