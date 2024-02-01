@@ -1,8 +1,8 @@
 package com.github.cpjinan.plugin.akariban.internal.manager
 
-import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.formatToLocalDateTime
-import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.formatToString
-import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.parseTime
+import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToLocalDateTime
+import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToString
+import com.github.cpjinan.plugin.akariban.utils.TimeUtil.parseTime
 
 object TimeManager {
     fun getUnbanTime(banTime: String, banDuration: String): String {

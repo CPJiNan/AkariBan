@@ -4,6 +4,7 @@ import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 
+@Suppress("DEPRECATION")
 object PlayerManager {
     fun Player.getPlayerID(): String {
         return if (ConfigManager.config.getString("options.player-id").equals("name")) this.name

@@ -14,6 +14,8 @@ taboolib {
         install(
             UNIVERSAL,
             UI,
+            KETHER,
+            METRICS,
             DATABASE,
             BUKKIT_ALL
             )
@@ -23,11 +25,11 @@ taboolib {
             name("CPJiNan")
         }
         dependencies {
-            name("AkariLib")
             name("PlaceholderAPI").optional(true)
         }
     }
     version { taboolib = "6.1.0" }
+    relocate("kotlinx.serialization", "kotlinx.serialization160")
 }
 
 repositories {

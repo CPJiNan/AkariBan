@@ -4,7 +4,7 @@ import com.github.cpjinan.plugin.akariban.internal.api.AkariBanAPI
 import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.isPlayerOnline
-import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.formatToString
+import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToString
 import org.bukkit.Bukkit
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.CommandContext

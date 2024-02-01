@@ -4,7 +4,7 @@ import com.github.cpjinan.plugin.akariban.internal.api.AkariBanAPI
 import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.getPlayerID
-import com.github.cpjinan.plugin.akarilib.utils.TimeUtil.formatToLocalDateTime
+import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToLocalDateTime
 import org.bukkit.Bukkit
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent
 import taboolib.common.platform.event.SubscribeEvent

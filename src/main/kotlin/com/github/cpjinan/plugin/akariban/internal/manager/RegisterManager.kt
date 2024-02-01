@@ -1,7 +1,6 @@
 package com.github.cpjinan.plugin.akariban.internal.manager
 
-import com.github.cpjinan.plugin.akarilib.api.PluginRegistry
-import com.github.cpjinan.plugin.akarilib.utils.MetricsUtil
+import com.github.cpjinan.plugin.akariban.utils.MetricsUtil
 import taboolib.common.platform.function.info
 import taboolib.platform.BukkitPlugin
 import java.net.HttpURLConnection
@@ -13,8 +12,7 @@ object RegisterManager {
         registerUrl()
         registerUpdate()
         DatabaseManager.getDatabase().save()
-        PluginRegistry.registerPlugin(BukkitPlugin.getInstance())
-        if (ConfigManager.isMetricsEnabled()) MetricsUtil.registerBukkitMetrics(18992, BukkitPlugin.getInstance())
+        if (ConfigManager.isMetricsEnabled()) MetricsUtil.registerBukkitMetrics(18992)
     }
 
     private fun registerLogo() {
