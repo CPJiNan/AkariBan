@@ -17,6 +17,14 @@ object FormatManager {
         return kickMessage.replaceWithOrder(player.name, player.uniqueId, kickReason, kickingAdmin, kickTime).colored()
     }
 
+    fun getWhitelistFormat(
+        player: OfflinePlayer
+    ): String {
+        val whitelistMessage =
+            ConfigManager.config.getStringList("options.message-format.whitelist").joinToString(separator = "")
+        return whitelistMessage.replaceWithOrder(player.name!!, player.uniqueId).colored()
+    }
+
     fun getBanFormat(
         player: Player,
         banReason: String = "",

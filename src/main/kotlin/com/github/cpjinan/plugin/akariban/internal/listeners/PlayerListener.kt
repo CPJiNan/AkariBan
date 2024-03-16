@@ -1,6 +1,7 @@
 package com.github.cpjinan.plugin.akariban.internal.listeners
 
 import com.github.cpjinan.plugin.akariban.internal.api.AkariBanAPI
+import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.getPlayerID
@@ -24,8 +25,17 @@ object PlayerListener {
         val data = db.getPlayerByName(event.name.getPlayerID())
         db.save()
         // time
-        if (data.unbanTime.isBlank()) event.allow()
-        else {
+        if (data.unbanTime.isBlank()) {
+            if (!ConfigManager.config.getBoolean("options.whitelist") || data.isWhitelisted) event.allow()
+            else {
+                event.disallow(
+                    AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST,
+                    FormatManager.getWhitelistFormat(
+                        offlinePlayer
+                    )
+                )
+            }
+        } else {
             val now = LocalDateTime.now()
             val unbanTime = data.unbanTime.formatToLocalDateTime(FormatManager.getTimeFormat())
             if (now.isAfter(unbanTime)) AkariBanAPI.unbanPlayer(event.name.getPlayerID())

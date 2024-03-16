@@ -3,6 +3,7 @@ package com.github.cpjinan.plugin.akariban.internal.commands
 import com.github.cpjinan.plugin.akariban.internal.commands.subCommands.Ban
 import com.github.cpjinan.plugin.akariban.internal.commands.subCommands.Kick
 import com.github.cpjinan.plugin.akariban.internal.commands.subCommands.Unban
+import com.github.cpjinan.plugin.akariban.internal.commands.subCommands.Whitelist
 import taboolib.common.platform.command.CommandBody
 import taboolib.common.platform.command.CommandHeader
 import taboolib.common.platform.command.PermissionDefault
@@ -22,4 +23,7 @@ object MainCommand {
 
     @CommandBody
     val unban = Unban.unban
+
+    @CommandBody
+    val whitelist = Whitelist.whitelist
 }

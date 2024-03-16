@@ -4,6 +4,7 @@ import com.github.cpjinan.plugin.akariban.internal.events.ban.OfflinePlayerBanEv
 import com.github.cpjinan.plugin.akariban.internal.events.ban.OnlinePlayerBanEvent
 import com.github.cpjinan.plugin.akariban.internal.events.kick.PlayerKickEvent
 import com.github.cpjinan.plugin.akariban.internal.events.unban.PlayerUnbanEvent
+import com.github.cpjinan.plugin.akariban.internal.events.whitelist.PlayerWhitelistEvent
 import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.PlayerManager.getPlayerID
@@ -32,6 +33,22 @@ object AkariBanAPI {
                     this.kickTime,
                     this.kickingAdmin
                 )
+            )
+        }
+    }
+
+    private fun whitelist(
+        playerID: String,
+        isWhitelisted: Boolean = false,
+        whitelistTime: String = "",
+        whitelistingAdmin: String = ""
+    ) {
+        callPluginEvent(PlayerWhitelistEvent(playerID, isWhitelisted, whitelistTime, whitelistingAdmin)) {
+            setPlayerWhitelistData(
+                playerID = this.playerID,
+                isWhitelisted = this.isWhitelisted,
+                whitelistTime = this.whitelistTime,
+                whitelistingAdmin = this.whitelistingAdmin
             )
         }
     }
@@ -119,6 +136,21 @@ object AkariBanAPI {
         db.save()
     }
 
+    private fun setPlayerWhitelistData(
+        playerID: String,
+        isWhitelisted: Boolean = false,
+        whitelistingAdmin: String = "",
+        whitelistTime: String = ""
+    ) {
+        val db = DatabaseManager.getDatabase()
+        val data = db.getPlayerByName(playerID)
+        data.isWhitelisted = isWhitelisted
+        data.whitelistingAdmin = whitelistingAdmin
+        data.whitelistTime = whitelistTime
+        db.updatePlayer(playerID, data)
+        db.save()
+    }
+
     fun kickPlayer(player: Player, kickReason: String, kickTime: String, kickingAdmin: String) {
         kick(player, kickReason, kickTime, kickingAdmin)
     }
@@ -147,5 +179,16 @@ object AkariBanAPI {
         playerID: String
     ) {
         unban(playerID)
+    }
+
+    fun whitelistPlayer(
+        playerID: String,
+        isWhitelisted: Boolean = false,
+        whitelistTime: String = "",
+        whitelistingAdmin: String = ""
+    ) {
+        whitelist(
+            playerID, isWhitelisted, whitelistTime, whitelistingAdmin
+        )
     }
 }

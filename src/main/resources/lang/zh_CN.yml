@@ -1,5 +1,7 @@
 kick-success: "&c已将玩家 &f{0} &c从服务器请出!"
 ban-success: "&c已将玩家 &f{0} &c从服务器封禁!"
 unban-success: "&c已将玩家 &f{0} &c从服务器解封!"
+whitelist-success: "&c已将玩家 &f{0} &c添加至白名单!"
+remove-whitelist-success: "&c已将玩家 &f{0} &c从白名单中移除!"
 
 no-permission: "&c无进行当前操作的权限！"
