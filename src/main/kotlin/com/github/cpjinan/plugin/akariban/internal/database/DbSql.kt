@@ -8,8 +8,9 @@ import taboolib.module.database.HostSQL
 import taboolib.module.database.Table
 
 class DbSql : Database {
-    private val host = HostSQL(ConfigManager.config.getConfigurationSection("options.database.sql")!!)
-    private val table = Table("akariban", host) {
+    private val host = ConfigManager.getSqlHost()
+    private val dataSource by lazy { host.createDataSource() }
+    private val table = Table(ConfigManager.getSqlTable(), host) {
         add("playerID") {
             type(ColumnTypeSQL.VARCHAR, 255) {
                 options(ColumnOptionSQL.PRIMARY_KEY)
@@ -34,8 +35,6 @@ class DbSql : Database {
             type(ColumnTypeSQL.VARCHAR, 255)
         }
     }
-
-    private val dataSource = host.createDataSource()
 
     override fun getPlayerByName(name: String): Player {
         return table.select(dataSource) {
