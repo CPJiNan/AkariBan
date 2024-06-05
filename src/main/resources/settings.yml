@@ -1,0 +1,122 @@
+#      _    _              _ ____                #
+#     / \  | | ____ _ _ __(_) __ )  __ _ _ __    #
+#    / _ \ | |/ / _` | '__| |  _ \ / _` | '_ \   #
+#   / ___ \|   < (_| | |  | | |_) | (_| | | | |  #
+#  /_/   \_\_|\_\__,_|_|  |_|____/ \__,_|_| |_|  #
+
+################################
+#       AkariBan  Config       #
+################################
+
+# 其他版本的语言文件请参阅 AkariBan/lang/settings 文件夹
+# For other language versions of the configuration files, please refer to the AkariBan/lang/settings folder
+
+###########
+# Options #
+###########
+
+# 全局设置
+Options:
+  # 配置文件版本
+  Config-Version: 2
+  # 检查版本更新
+  Check-Update: true
+  # 启用 bStats 统计
+  Send-Metrics: true
+  # 启用调试模式
+  Debug: false
+  # 启用白名单功能
+  Whitelist: false
+  # 玩家信息标识符 (name, uuid)
+  Player-ID: name
+  # 默认变量值相关
+  Default-Value:
+    # 请出原因
+    Kick-Reason: "管理员未填写请出原因"
+    # 封禁原因
+    Ban-Reason: "管理员未填写封禁原因"
+  # 时间格式
+  Time-Format:
+    # 日期格式 (LocalDate)
+    Date: "yyyy-MM-dd"
+    # 时间格式 (LocalTimeDate)
+    Time: "yyyy-MM-dd HH:mm:ss"
+    # 时长格式
+    Duration:
+      Second: "s"
+      Minute: "m"
+      Hour: "H"
+      Day: "d"
+      Week: "w"
+      Month: "M"
+      Year: "y"
+
+############
+# Database #
+############
+
+# 数据存储相关
+Database:
+  # 存储方式 (JSON, CBOR, SQL)
+  Method: JSON
+  JSON:
+    file: database.json
+  CBOR:
+    file: database.cbor
+  SQL:
+    host: localhost
+    port: 3306
+    user: root
+    password: password
+    database: minecraft
+    table: akariban
+
+###########
+# Message #
+###########
+
+# 消息格式相关
+Message-Format:
+  # 请出消息格式
+  # {0} -> 玩家名称
+  # {1} -> 玩家UUID
+  # {2} -> 请出原因
+  # {3} -> 操作管理
+  # {4} -> 操作时间
+  Kick:
+    - "&c您已被管理员从服务器请出！\n"
+    - "\n"
+    - "&7玩家名称: &f{0}\n"
+    - "&7请出原因: &f{2}\n"
+    - "\n"
+    - "&7操作管理: &f{3}\n"
+    - "&7操作时间: &f{4}\n"
+    - "&7查看详情: &b&n请前往服务器交流群/官网\n"
+    - "\n"
+  # 封禁消息格式
+  # {0} -> 玩家名称
+  # {1} -> 玩家UUID
+  # {2} -> 封禁原因
+  # {3} -> 操作管理
+  # {4} -> 操作时间
+  # {5} -> 解封时间
+  # {6} -> 封禁时长
+  Ban:
+    - "&c您已被管理员从服务器封禁至{5}！\n"
+    - "\n"
+    - "&7玩家名称: &f{0}\n"
+    - "&7封禁原因: &f{2}\n"
+    - "\n"
+    - "&7操作管理: &f{3}\n"
+    - "&7操作时间: &f{4}\n"
+    - "&7查看详情: &b&n请前往服务器交流群/官网\n"
+    - "\n"
+  # 封禁消息格式
+  # {0} -> 玩家名称
+  # {1} -> 玩家UUID
+  Whitelist:
+    - "&c您不在服务器的白名单中！\n"
+    - "\n"
+    - "&7玩家名称: &f{0}\n"
+    - "&7申请白名单: &b&n请前往服务器交流群/官网\n"
+    - "\n"

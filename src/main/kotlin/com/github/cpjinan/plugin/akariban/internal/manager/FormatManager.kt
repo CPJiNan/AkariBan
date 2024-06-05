@@ -1,10 +1,12 @@
 package com.github.cpjinan.plugin.akariban.internal.manager
 
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import taboolib.common.util.replaceWithOrder
 import taboolib.module.chat.colored
 
+@Suppress("DEPRECATION")
 object FormatManager {
     fun getKickFormat(
         player: Player,
@@ -13,7 +15,7 @@ object FormatManager {
         kickingAdmin: String = ""
     ): String {
         val kickMessage =
-            ConfigManager.config.getStringList("options.message-format.kick").joinToString(separator = "")
+            ConfigManager.getKickFormat().joinToString(separator = "")
         return kickMessage.replaceWithOrder(player.name, player.uniqueId, kickReason, kickingAdmin, kickTime).colored()
     }
 
@@ -21,7 +23,7 @@ object FormatManager {
         player: OfflinePlayer
     ): String {
         val whitelistMessage =
-            ConfigManager.config.getStringList("options.message-format.whitelist").joinToString(separator = "")
+            ConfigManager.getWhitelistFormat().joinToString(separator = "")
         return whitelistMessage.replaceWithOrder(player.name!!, player.uniqueId).colored()
     }
 
@@ -34,7 +36,7 @@ object FormatManager {
         banningAdmin: String = ""
     ): String {
         val banMessage =
-            ConfigManager.config.getStringList("options.message-format.ban").joinToString(separator = "")
+            ConfigManager.getBanFormat().joinToString(separator = "")
         return banMessage.replaceWithOrder(
             player.name,
             player.uniqueId,
@@ -55,7 +57,7 @@ object FormatManager {
         banningAdmin: String = ""
     ): String {
         val banMessage =
-            ConfigManager.config.getStringList("options.message-format.ban").joinToString(separator = "")
+            ConfigManager.getBanFormat().joinToString(separator = "")
         return banMessage.replaceWithOrder(
             player.name!!,
             player.uniqueId,
@@ -67,5 +69,23 @@ object FormatManager {
         ).colored()
     }
 
-    fun getTimeFormat(): String = ConfigManager.config.getString("options.time-format.time")!!
+    fun getTimeFormat(): String = ConfigManager.getTimeFormat().getString("Time")!!
+
+    fun Player.getPlayerID(): String {
+        return if (ConfigManager.getPlayerID().equals("name")) this.name
+        else this.uniqueId.toString()
+    }
+
+    fun OfflinePlayer.getPlayerID(): String? {
+        return if (ConfigManager.getPlayerID().equals("name")) this.name
+        else this.uniqueId.toString()
+    }
+
+    fun String.getPlayerID(): String {
+        return Bukkit.getOfflinePlayer(this).getPlayerID() ?: this
+    }
+
+    fun String.isPlayerOnline(): Boolean {
+        return Bukkit.getOfflinePlayer(this).isOnline
+    }
 }

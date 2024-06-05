@@ -9,15 +9,14 @@ object DatabaseManager {
     private var database: Database? = null
 
     private fun openDatabase(): Database {
-        val dbType = ConfigManager.config.getString("options.database.type") ?: "JSON"
-        val dbUri = ConfigManager.config.getString("options.database.uri")
+        val dbType = ConfigManager.getMethod() ?: "JSON"
         return when (dbType) {
             "JSON" -> {
-                DbJson(dbUri ?: "database.json")
+                DbJson()
             }
 
             "CBOR" -> {
-                DbCbor(dbUri ?: "database.cbor")
+                DbCbor()
             }
 
             "SQL" -> {

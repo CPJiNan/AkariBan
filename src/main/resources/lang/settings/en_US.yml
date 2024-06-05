@@ -1,0 +1,126 @@
+# English Language File Contributor: YangXiaoMian
+
+# The changes you made in this file will not be applied to the plugin
+# Please make modifications in AkariBan/settings.yml instead
+
+#      _    _              _ ____                #
+#     / \  | | ____ _ _ __(_) __ )  __ _ _ __    #
+#    / _ \ | |/ / _` | '__| |  _ \ / _` | '_ \   #
+#   / ___ \|   < (_| | |  | | |_) | (_| | | | |  #
+#  /_/   \_\_|\_\__,_|_|  |_|____/ \__,_|_| |_|  #
+
+################################
+#       AkariBan  Config       #
+################################
+
+# For other language versions of the configuration files, please refer to the AkariBan/lang/settings folder
+
+###########
+# Options #
+###########
+
+# Global Settings
+Options:
+  # Configuration file version
+  Config-Version: 2
+  # Enable plugin update notifications
+  Check-Update: true
+  # Enable bStats data metrics
+  Send-Metrics: true
+  # Enable debug mode
+  Debug: false
+  # Enable whitelist feature
+  Whitelist: false
+  # Player identifier (name, uuid)
+  Player-ID: name
+  # Default variable values
+  Default-Value:
+    # Kick reason
+    Kick-Reason: "Admin did not provide a kick reason"
+    # Ban reason
+    Ban-Reason: "Admin did not provide a ban reason"
+  # Time format
+  Time-Format:
+    # Date format (LocalDate)
+    Date: "yyyy-MM-dd"
+    # Time format (LocalTimeDate)
+    Time: "yyyy-MM-dd HH:mm:ss"
+    # Duration format
+    Duration:
+      Second: "s"
+      Minute: "m"
+      Hour: "H"
+      Day: "d"
+      Week: "w"
+      Month: "M"
+      Year: "y"
+
+############
+# Database #
+############
+
+# Data storage settings
+Database:
+  # Storage type (JSON, CBOR, SQL)
+  Method: JSON
+  JSON:
+    file: database.json
+  CBOR:
+    file: database.cbor
+  SQL:
+    host: localhost
+    port: 3306
+    user: root
+    password: password
+    database: minecraft
+    table: akariban
+
+###########
+# Message #
+###########
+
+# Message format settings
+Message-Format:
+  # Kick message format
+  # {0} -> Player name
+  # {1} -> Player UUID
+  # {2} -> Kick reason
+  # {3} -> Admin
+  # {4} -> Operation time
+  Kick:
+    - "&cYou have been kicked from the server by an admin!\n"
+    - "\n"
+    - "&7Player Name: &f{0}\n"
+    - "&7Kick Reason: &f{2}\n"
+    - "\n"
+    - "&7Admin: &f{3}\n"
+    - "&7Operation Time: &f{4}\n"
+    - "&7For more details: &b&nPlease visit the server community/group/website\n"
+    - "\n"
+  # Ban message format
+  # {0} -> Player name
+  # {1} -> Player UUID
+  # {2} -> Ban reason
+  # {3} -> Admin
+  # {4} -> Operation time
+  # {5} -> Unban time
+  # {6} -> Ban duration
+  Ban:
+    - "&cYou have been banned from the server by an admin until {5}!\n"
+    - "\n"
+    - "&7Player Name: &f{0}\n"
+    - "&7Ban Reason: &f{2}\n"
+    - "\n"
+    - "&7Admin: &f{3}\n"
+    - "&7Operation Time: &f{4}\n"
+    - "&7For more details: &b&nPlease visit the server community/group/website\n"
+    - "\n"
+  # Whitelist message format
+  # {0} -> Player name
+  # {1} -> Player UUID
+  Whitelist:
+    - "&cYou are not on the server whitelist!\n"
+    - "\n"
+    - "&7Player Name: &f{0}\n"
+    - "&7Apply for whitelist: &b&nPlease visit the server community/group/website\n"
+    - "\n"

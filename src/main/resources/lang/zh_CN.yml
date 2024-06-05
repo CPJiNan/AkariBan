@@ -1,7 +1,29 @@
-kick-success: "&c已将玩家 &f{0} &c从服务器请出!"
-ban-success: "&c已将玩家 &f{0} &c从服务器封禁!"
-unban-success: "&c已将玩家 &f{0} &c从服务器解封!"
-whitelist-success: "&c已将玩家 &f{0} &c添加至白名单!"
-remove-whitelist-success: "&c已将玩家 &f{0} &c从白名单中移除!"
-
-no-permission: "&c无进行当前操作的权限！"
+# 插件相关
+Plugin-Loading: '&7正在加载 &3Akari&bBan&8&f... &8{0}'
+Plugin-Enabled: '&8[&3Akari&bBan&8] &b信息 &8| &6插件加载完毕.'
+Plugin-Disable: '&8[&3Akari&bBan&8] &b信息 &8| &6插件卸载完毕.'
+Plugin-Reloaded: '&8[&3Akari&bBan&8] &b信息 &8| &6插件重载完毕.'
+Plugin-Update:
+  - '&r===============[&e&l插件更新&r]=============='
+  - '&r| &r插件 &6AkariBan &7=>'
+  - '&r| &b◈ &r发现了一个新的插件版本！'
+  - '&r| &b◈ &r最新版本: %latestVersion%'
+  - '&r| &b◈ &r当前版本: %currentVersion%'
+  - '&r| &b◈ &r查看详情: https://www.minebbs.com/resources/7081/'
+  - '&r===============[&e&l插件更新&r]=============='
+No-Permission: "&c无进行当前操作的权限！"
+# 配置相关
+Config-Update:
+  - '&r===============[&e&l配置更新&r]=============='
+  - '&r| &6配置文件 &7=>'
+  - '&r| &b◈ &r发现了一个新的配置文件版本！'
+  - '&r| &b◈ &r最新版本: %latestVersion%'
+  - '&r| &b◈ &r当前版本: %currentVersion%'
+  - '&r| &b◈ &r请保存备份并重新生成 lang 文件夹中的配置文件！'
+  - '&r===============[&e&l配置更新&r]=============='
+# 请出/封禁/白名单相关
+Kick-Success: "&c已将玩家 &f{0} &c从服务器请出!"
+Ban-Success: "&c已将玩家 &f{0} &c从服务器封禁!"
+Unban-Success: "&c已将玩家 &f{0} &c从服务器解封!"
+Whitelist-Success: "&c已将玩家 &f{0} &c添加至白名单!"
+Remove-Whitelist-Success: "&c已将玩家 &f{0} &c从白名单中移除!"

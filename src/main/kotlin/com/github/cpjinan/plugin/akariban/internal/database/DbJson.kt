@@ -1,18 +1,19 @@
 package com.github.cpjinan.plugin.akariban.internal.database
 
-import com.github.cpjinan.plugin.akariban.internal.database.types.Player
+import com.github.cpjinan.plugin.akariban.internal.database.type.Player
+import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.bukkit.Bukkit
 import java.io.File
 
-class DbJson(filePath: String) : Database {
+class DbJson : Database {
     private val file: File
     private val playerData: HashMap<String, Player>
 
     init {
         val parent = Bukkit.getPluginManager().getPlugin("AkariBan")?.dataFolder ?: File(".")
-        file = File(parent, filePath)
+        file = File(parent, ConfigManager.getJsonSection().getString("file")!!)
         playerData = if (file.exists()) {
             val content = file.readText(Charsets.UTF_8)
             if (content.isNotBlank()) {

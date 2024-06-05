@@ -1,6 +1,6 @@
 package com.github.cpjinan.plugin.akariban.internal.database
 
-import com.github.cpjinan.plugin.akariban.internal.database.types.Player
+import com.github.cpjinan.plugin.akariban.internal.database.type.Player
 import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import taboolib.module.database.ColumnOptionSQL
 import taboolib.module.database.ColumnTypeSQL
