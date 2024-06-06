@@ -1,7 +1,6 @@
 package com.github.cpjinan.plugin.akariban.internal
 
 import com.github.cpjinan.plugin.akariban.AkariBan.plugin
-import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.utils.LoggerUtil
 import com.github.cpjinan.plugin.akariban.utils.UpdateUtil
@@ -31,7 +30,6 @@ object PluginLoader {
             "&o  /_/   \\_\\_|\\_\\__,_|_|  |_|____/ \\__,_|_| |_|  ".colored(),
             ""
         )
-        ConfigManager.initializeConfig()
         DatabaseManager.getDatabase().save()
         console().sendLang("Plugin-Enabled")
         UpdateUtil.getPluginNotice()

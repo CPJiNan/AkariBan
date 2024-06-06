@@ -4,7 +4,6 @@ import com.github.cpjinan.plugin.akariban.internal.database.type.Player
 import com.github.cpjinan.plugin.akariban.internal.manager.ConfigManager
 import taboolib.module.database.ColumnOptionSQL
 import taboolib.module.database.ColumnTypeSQL
-import taboolib.module.database.HostSQL
 import taboolib.module.database.Table
 
 class DbSql : Database {

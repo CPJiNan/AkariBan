@@ -3,8 +3,6 @@ package com.github.cpjinan.plugin.akariban.internal.manager
 import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToLocalDateTime
 import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToString
 import com.github.cpjinan.plugin.akariban.utils.TimeUtil.parseTime
-import taboolib.common.io.newFile
-import taboolib.common.platform.function.getDataFolder
 import taboolib.module.configuration.Config
 import taboolib.module.configuration.ConfigFile
 import taboolib.module.database.getHost
@@ -17,10 +15,11 @@ object ConfigManager {
     const val VERSION = 2
 
     // Config initialization
-    fun initializeConfig() {
-        newFile(getDataFolder(), "lang/settings/zh_CN.yml", create = true)
-        newFile(getDataFolder(), "lang/settings/en_US.yml", create = true)
-    }
+    @Config("lang/settings/zh_CN.yml")
+    lateinit var settings_zh_CN: ConfigFile
+
+    @Config("lang/settings/en_US.yml")
+    lateinit var settings_en_US: ConfigFile
 
     // Options
     fun getConfigVersion() = settings.getInt("Options.Config-Version")
