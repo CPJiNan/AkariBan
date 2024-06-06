@@ -15,10 +15,10 @@ object ConfigManager {
     const val VERSION = 2
 
     // Config initialization
-    @Config("lang/settings/zh_CN.yml")
+    @Config("lang/settings/zh_CN.yml", autoReload = false)
     lateinit var settings_zh_CN: ConfigFile
 
-    @Config("lang/settings/en_US.yml")
+    @Config("lang/settings/en_US.yml", autoReload = false)
     lateinit var settings_en_US: ConfigFile
 
     // Options
