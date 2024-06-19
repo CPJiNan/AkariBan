@@ -28,7 +28,7 @@ object MainCommand {
     val whitelist = Whitelist.whitelist
 
     @CommandBody(hidden = true)
-    val help = subCommand { createHelper() }
+    val help = mainCommand { createHelper() }
 
     @CommandBody
     val reload = subCommand {
