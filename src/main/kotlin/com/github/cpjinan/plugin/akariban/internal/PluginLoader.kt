@@ -32,11 +32,11 @@ object PluginLoader {
             ""
         )
         DatabaseManager.getDatabase().save()
+        MainCommand.simpleCommand()
         console().sendLang("Plugin-Enabled")
         UpdateUtil.getPluginNotice()
         UpdateUtil.getPluginUpdate()
         UpdateUtil.getConfigUpdate()
-        MainCommand.simpleCommand()
     }
 
     @Awake(LifeCycle.DISABLE)
