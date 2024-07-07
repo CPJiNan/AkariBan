@@ -50,6 +50,8 @@ Options:
       Week: "w"
       Month: "M"
       Year: "y"
+    # 永久封禁时长
+    Permanent: "10y"
 
 ############
 # Database #
