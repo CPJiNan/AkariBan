@@ -1,6 +1,7 @@
 package com.github.cpjinan.plugin.akariban.internal
 
 import com.github.cpjinan.plugin.akariban.AkariBan.plugin
+import com.github.cpjinan.plugin.akariban.internal.command.MainCommand
 import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.utils.LoggerUtil
 import com.github.cpjinan.plugin.akariban.utils.UpdateUtil
@@ -35,6 +36,7 @@ object PluginLoader {
         UpdateUtil.getPluginNotice()
         UpdateUtil.getPluginUpdate()
         UpdateUtil.getConfigUpdate()
+        MainCommand.simpleCommand()
     }
 
     @Awake(LifeCycle.DISABLE)

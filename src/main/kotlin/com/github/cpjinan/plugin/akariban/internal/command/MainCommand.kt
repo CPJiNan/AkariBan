@@ -37,4 +37,19 @@ object MainCommand {
             sender.sendLang("Plugin-Reloaded")
         }
     }
+
+    fun simpleCommand() {
+        simpleCommand("kick") { sender, args ->
+            sender.performCommand("akariban kick ${args.joinToString(" ")}")
+        }
+        simpleCommand("ban") { sender, args ->
+            sender.performCommand("akariban ban ${args.joinToString(" ")}")
+        }
+        simpleCommand("unban") { sender, args ->
+            sender.performCommand("akariban unban ${args.joinToString(" ")}")
+        }
+        simpleCommand("whitelist") { sender, args ->
+            sender.performCommand("akariban whitelist ${args.joinToString(" ")}")
+        }
+    }
 }
