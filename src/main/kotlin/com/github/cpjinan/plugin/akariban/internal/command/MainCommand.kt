@@ -30,7 +30,7 @@ object MainCommand {
     @CommandBody(hidden = true)
     val help = mainCommand { createHelper() }
 
-    @CommandBody
+    @CommandBody(permission = "akariban.reload")
     val reload = subCommand {
         execute { sender: ProxyCommandSender, _: CommandContext<ProxyCommandSender>, _: String ->
             ConfigManager.settings.reload()
