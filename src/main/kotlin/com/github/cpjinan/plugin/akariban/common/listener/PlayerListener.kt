@@ -6,15 +6,17 @@ import com.github.cpjinan.plugin.akariban.internal.manager.DatabaseManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager
 import com.github.cpjinan.plugin.akariban.internal.manager.FormatManager.getPlayerID
 import com.github.cpjinan.plugin.akariban.utils.TimeUtil.formatToLocalDateTime
+import com.github.cpjinan.plugin.akariban.utils.UpdateUtil
 import org.bukkit.Bukkit
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent
+import org.bukkit.event.player.PlayerJoinEvent
 import taboolib.common.platform.event.SubscribeEvent
 import java.time.LocalDateTime
 
 object PlayerListener {
     @SubscribeEvent
-    fun onPlayerJoin() {
-        DatabaseManager.getDatabase().save()
+    fun onPlayerJoin(event: PlayerJoinEvent) {
+        if (event.player.isOp && ConfigManager.isEnabledOPNotify()) UpdateUtil.sendPlayerUpdateNotify(event.player)
     }
 
     @SubscribeEvent

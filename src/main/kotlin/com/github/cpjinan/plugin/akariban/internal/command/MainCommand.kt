@@ -15,16 +15,16 @@ object MainCommand {
     @CommandBody
     val main = mainCommand { createHelper() }
 
-    @CommandBody
+    @CommandBody(permission = "akariban.kick")
     val kick = Kick.kick
 
-    @CommandBody
+    @CommandBody(permission = "akariban.ban")
     val ban = Ban.ban
 
-    @CommandBody
+    @CommandBody(permission = "akariban.unban")
     val unban = Unban.unban
 
-    @CommandBody
+    @CommandBody(permission = "akariban.whitelist")
     val whitelist = Whitelist.whitelist
 
     @CommandBody(hidden = true)

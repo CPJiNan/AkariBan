@@ -12,7 +12,7 @@ object ConfigManager {
     lateinit var settings: ConfigFile
 
     // Config Version
-    const val VERSION = 2
+    const val VERSION = 3
 
     // Config initialization
     @Config("lang/settings/zh_CN.yml", autoReload = false)
@@ -24,6 +24,7 @@ object ConfigManager {
     // Options
     fun getConfigVersion() = settings.getInt("Options.Config-Version")
     fun isEnabledCheckUpdate() = settings.getBoolean("Options.Check-Update")
+    fun isEnabledOPNotify() = settings.getBoolean("Options.OP-Notify")
     fun isEnabledSendMetrics() = settings.getBoolean("Options.Send-Metrics")
     fun isEnabledDebug() = settings.getBoolean("Options.Debug")
     fun isEnabledWhitelist() = settings.getBoolean("Options.Whitelist")
