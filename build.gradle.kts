@@ -3,7 +3,7 @@ import io.izzel.taboolib.gradle.*
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "2.0.18"
+    id("io.izzel.taboolib") version "2.0.12"
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.22"
 }
@@ -12,11 +12,11 @@ taboolib {
     env {
         install(
             UNIVERSAL,
-            BukkitUI,
-            Kether,
-            Metrics,
-            Database,
-            Bukkit
+            UI,
+            KETHER,
+            METRICS,
+            DATABASE,
+            BUKKIT_ALL
         )
     }
     description {
@@ -27,7 +27,7 @@ taboolib {
             name("PlaceholderAPI").optional(true)
         }
     }
-    version { taboolib = "6.2.0-beta12" }
+    version { taboolib = "6.1.2-beta10" }
     relocate("kotlinx.serialization", "kotlinx.serialization162")
 }
 
