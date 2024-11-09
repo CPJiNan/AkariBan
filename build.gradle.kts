@@ -3,7 +3,7 @@ import io.izzel.taboolib.gradle.*
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "2.0.12"
+    id("io.izzel.taboolib") version "2.0.20"
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.22"
 }
@@ -11,11 +11,13 @@ plugins {
 taboolib {
     env {
         install(
-            UNIVERSAL,
-            KETHER,
-            METRICS,
-            DATABASE,
-            BUKKIT_ALL
+            Metrics,
+            Database,
+            CommandHelper,
+            Kether,
+            Bukkit,
+            BukkitHook,
+            BukkitUtil
         )
     }
     description {
@@ -26,7 +28,7 @@ taboolib {
             name("PlaceholderAPI").optional(true)
         }
     }
-    version { taboolib = "6.1.2-beta10" }
+    version { taboolib = "6.2.0-beta33" }
     relocate("kotlinx.serialization", "kotlinx.serialization162")
 }
 
@@ -36,8 +38,8 @@ repositories {
 
 dependencies {
     compileOnly("ink.ptms:nms-all:1.0.0")
-    compileOnly("ink.ptms.core:v12004:12004:mapped")
-    compileOnly("ink.ptms.core:v12004:12004:universal")
+    compileOnly("ink.ptms.core:v11902:11902-minimize:mapped")
+    compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
     taboo("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.6.2")
