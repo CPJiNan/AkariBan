@@ -28,7 +28,7 @@ taboolib {
             name("PlaceholderAPI").optional(true)
         }
     }
-    version { taboolib = "6.2.0-beta33" }
+    version { taboolib = "6.2.1-f095116" }
     relocate("kotlinx.serialization", "kotlinx.serialization162")
 }
 
